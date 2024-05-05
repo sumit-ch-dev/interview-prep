@@ -333,6 +333,43 @@ const circle = new Circle(1, 'red');
 
 circle.draw(); // draw circle
 
+function User(username, email) {
+    this.username = username;
+    this.email = email;
+}
+
+User.prototype.login = function () {
+    console.log(`${this.username} has logged in`);
+    return this;
+}
+
+User.prototype.logout = function () {
+    console.log(`${this.username} has logged out`);
+    return this;
+}
+
+function Admin(username, email, title) {
+    User.call(this, username, email);
+    this.title = title;
+}
+
+Admin.prototype = Object.create(User.prototype);
+
+
+Admin.prototype.deleteUser = function () {
+    // delete user
+}
+
+
+const userOne = new User('mario', 'mario@gmail.com');
+
+const userTwo = new Admin('luigi', 'luigi@gmail.com', 'black-belt-ninja');
+
+console.log(userOne, userTwo);
+
+
+// this are the examples of prototype inheritance in javascript
+
 ```
 
 In the example above, `Shape` is a constructor function that defines a `draw` method. `Circle` is a constructor function that inherits from `Shape` using prototype chaining. The `Circle` constructor calls the `Shape` constructor using `Shape.call(this, color)` to initialize the `color` property.
@@ -395,6 +432,77 @@ Inheritance is a powerful feature of JavaScript that allows you to create comple
     const greetPerson = greet.bind(person);
 
     greetPerson('Hello'); // Hello, my name is John Doe
+
+
+    // more examples for call, apply and bind
+
+    const person = {
+        name: 'John Doe',
+        greet: function() {
+            console.log(`Hello, my name is ${this.name}`);
+        }
+    };
+
+    const anotherPerson = {
+        name: 'Jane Doe',
+    };
+
+    person.greet.call(anotherPerson); // Hello, my name is Jane Doe
+
+    person.greet.apply(anotherPerson); // Hello, my name is Jane Doe
+
+    const greetJane = person.greet.bind(anotherPerson);
+
+    greetJane(); // Hello, my name is Jane Doe
+
+
+    // apply with an array
+
+    function sum(a, b) {
+        return a + b;
+    }
+
+    const numbers = [1, 2];
+
+    console.log(sum.apply(null, numbers)); // 3
+
+    // bind with arguments
+
+    function greet(greeting) {
+        console.log(`${greeting}, my name is ${this.name}`);
+    }
+
+    const person = {
+        name: 'John Doe',
+    };
+
+    const greetPerson = greet.bind(person, 'Hello');
+
+    greetPerson(); // Hello, my name is John Doe
+
+
+    // bind with event listeners
+
+    const button = document.getElementById('button');
+
+    function handleClick(event) {
+        console.log('Button clicked');
+        console.log(this); // button element
+    }
+
+    button.addEventListener('click', handleClick);
+
+    const boundHandleClick = handleClick.bind(button);
+
+    button.addEventListener('click', boundHandleClick);
+
+    // bind with setTimeout
+
+    function logMessage() {
+        console.log('Hello, world!');
+    }
+
+    setTimeout(logMessage.bind(null), 1000);
 
     ```
 <!-- call, apply and bind -->
