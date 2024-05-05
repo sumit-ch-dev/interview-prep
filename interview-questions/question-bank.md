@@ -208,4 +208,93 @@ The class syntax in JavaScript provides a more familiar way to create objects fo
 
 <!-- class syntax -->
 
+<!-- factory functions -->
+
+### 6. What are factory functions in JavaScript?
+
+Factory functions are functions that return objects. They are a way to create objects in JavaScript without using the `new` keyword or constructor functions.
+
+Here is an example of a factory function in JavaScript:
+
+```javascript
+
+
+// factory functions
+
+function createCircle(radius) {
+    return {
+        radius,
+        draw() {
+            console.log('draw');
+        }
+    }
+}
+
+const circle = createCircle(1);
+
+console.log(circle);
+
+// constructor functions
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function() {
+        console.log('draw');
+    }
+}
+
+const circle2 = new Circle(1);
+
+console.log(circle2);
+
+// difference between factory and constructor functions
+
+// factory functions
+// - return an object
+// - no need to use the new keyword
+// - can have multiple instances
+
+// constructor functions
+// - use the new keyword
+// - can have multiple instances
+// - can have prototype methods
+
+
+// constructor functions with prototype methods
+
+function Circle2(radius) {
+    this.radius = radius;
+}
+
+Circle2.prototype.draw = function() {
+    console.log('draw');
+}
+
+const circle3 = new Circle2(1);
+
+console.log(circle3);
+
+// difference between prototype and instance members
+
+// prototype members
+
+// - are shared among all instances of the object
+// - are defined outside the constructor function
+// - are defined using the prototype property of the constructor function
+
+
+// instance members
+
+// - are unique to each instance of the object
+// - are defined inside the constructor function
+// - are defined using the this keyword
+
+```
+
+In the example above, `createCircle` is a factory function that returns an object with `radius` and `draw` properties. Factory functions are a simple and flexible way to create objects in JavaScript.
+
+<!-- factory functions -->
+
+
+
 
