@@ -154,5 +154,58 @@ In the example above, `person` is an object created using `Object.create()` with
 
 `Object.create()` is a powerful way to create objects in JavaScript and allows for prototypal inheritance.
 
+<!-- object.create with a custom object -->
+
+```javascript
+
+const personPrototype = {
+    greet: function() {
+        console.log(`Hello, my name is ${this.name}`);
+    },
+};
+
+const person = Object.create(personPrototype);
+
+person.name = 'John Doe';
+
+person.greet(); // Hello, my name is John Doe
+
+```
 
 <!-- object.create() -->
+
+
+<!-- class syntax -->
+
+### 5. What is the class syntax in JavaScript?
+
+The class syntax in JavaScript is a way to create objects using a class-like syntax
+
+Here is an example of using the class syntax in JavaScript:
+
+```javascript
+
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name}`);
+    }
+}
+
+const john = new Person('John Doe', 30);
+
+john.greet(); // Hello, my name is John Doe
+
+```
+
+In the example above, `Person` is a class that has a constructor method to initialize the object with `name` and `age` properties. It also has a `greet` method that is shared across all instances of the `Person` class.
+
+The class syntax in JavaScript provides a more familiar way to create objects for developers coming from other programming languages.
+
+<!-- class syntax -->
+
+
