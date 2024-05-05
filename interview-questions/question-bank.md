@@ -296,5 +296,51 @@ In the example above, `createCircle` is a factory function that returns an objec
 <!-- factory functions -->
 
 
+<!-- inheritance -->
+
+### 7. What is inheritance in JavaScript?
+
+Inheritance is a way to create a new object that inherits properties and methods from an existing object. It allows you to reuse code and create a hierarchy of objects.
+
+In JavaScript, inheritance can be achieved using prototype chaining or ES6 classes.
+
+Here is an example of inheritance using prototype chaining:
+
+```javascript
+
+function Shape(color) {
+    this.color = color;
+}
+
+Shape.prototype.draw = function() {
+    console.log('draw');
+}
+
+function Circle(radius, color) {
+    Shape.call(this, color);
+    this.radius = radius;
+}
+
+Circle.prototype = Object.create(Shape.prototype);
+
+Circle.prototype.constructor = Circle;
+
+Circle.prototype.draw = function() {
+    console.log('draw circle');
+}
+
+const circle = new Circle(1, 'red');
+
+circle.draw(); // draw circle
+
+```
+
+In the example above, `Shape` is a constructor function that defines a `draw` method. `Circle` is a constructor function that inherits from `Shape` using prototype chaining. The `Circle` constructor calls the `Shape` constructor using `Shape.call(this, color)` to initialize the `color` property.
+
+Inheritance is a powerful feature of JavaScript that allows you to create complex object hierarchies and reuse code effectively.
+
+<!-- inheritance -->
+
+
 
 
