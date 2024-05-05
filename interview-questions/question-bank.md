@@ -342,5 +342,62 @@ Inheritance is a powerful feature of JavaScript that allows you to create comple
 <!-- inheritance -->
 
 
+<!-- call, apply and bind -->
+
+### 8. What are `call`, `apply`, and `bind` in JavaScript?
+
+`call`, `apply`, and `bind` are methods in JavaScript that are used to set the value of `this` in a function and call that function with a specified context.
+
+1. **`call`**: The `call` method is used to call a function with a specified `this` value and arguments provided individually.
+
+    ```javascript
+
+    function greet() {
+        console.log(`Hello, my name is ${this.name}`);
+    }
+
+    const person = {
+        name: 'John Doe',
+    };
+
+    greet.call(person); // Hello, my name is John Doe
+
+    ```
+
+2. **`apply`**: The `apply` method is similar to `call`, but it takes arguments as an array.
+
+    ```javascript
+
+    function greet(greeting) {
+        console.log(`${greeting}, my name is ${this.name}`);
+    }
+
+    const person = {
+        name: 'John Doe',
+    };
+
+    greet.apply(person, ['Hello']); // Hello, my name is John Doe
+
+    ```
+
+3. **`bind`**: The `bind` method is used to create a new function with a specified `this` value and arguments provided individually.
+
+    ```javascript
+
+    function greet(greeting) {
+        console.log(`${greeting}, my name is ${this.name}`);
+    }
+
+    const person = {
+        name: 'John Doe',
+    };
+
+    const greetPerson = greet.bind(person);
+
+    greetPerson('Hello'); // Hello, my name is John Doe
+
+    ```
+<!-- call, apply and bind -->
+
 
 
